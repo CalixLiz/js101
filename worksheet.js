@@ -18,8 +18,10 @@ var addOne = function(num) {
 // Fix the following code so doubleNum(2) wil equal 4. 
 
 var doubleNum = function(num) {
-	num * 2
+	return num * 2
 }
+console.log('Part 1')
+console.log(doubleNum(2))
 
 /**
  * PART 2
@@ -27,11 +29,49 @@ var doubleNum = function(num) {
  * Write a function called sum that takes two numbers as
  * inputs and computes the sum of those two numbers.
  */
+var sum = function(number1,number2) {
+	return number1 + number2
+}
+console.log('Part 2')
+console.log(sum(10,20))
 
  // PART 2.5
 
 // modify your sum() function so that it will return null
 // if either of the inputs is not a number.
+
+
+var sum = function(number1,number2) {
+	if (typeof number1 === 'number' && typeof number2 === 'number'){
+        return number1 + number2
+    }
+    else 
+    {
+        return null
+    }
+}
+
+console.log('Part 2.5')   
+console.log(sum('b','a'))
+
+// Now, modify your sum function again, so that it 
+// will return null if any of the inputs is negative.
+// To avoid repeating yourself, use your isNegative 
+// function inside your sum funciton ***
+
+var sum = function(number1,number2) {
+    if(number1 < 0 || number2 < 0){
+        return null
+    }
+    else {
+        return number1 + number2
+    }
+}    
+
+
+console.log('return null if eitherinput isNegative')
+console.log(sum(9, -9))
+
 
 // PART 3
 
@@ -40,17 +80,31 @@ var doubleNum = function(num) {
 // repeating yourself, use your sum function inside 
 // of your average function.
 
+var average = function(number1, number2){
+	sum()
+	return sum(number1, number2)/2
+}
+
+console.log('average result Part 3')
+console.log(average(20, 10))
 
 // Part 4
 
 // Write a function called isNegative that will tell 
 // whether a number is negative or not.
 
+var isNegative = function(number){
+    if(number < 0){
+        return true
+    }
+       else{ 
+       	return false 
+       	}
+}
 
-// Now, modify your sum function again, so that it 
-// will return null if any of the inputs is negative.
-// To avoid repeating yourself, use your isNegative 
-// function inside your sum funciton ***
+console.log('sum Part 4')
+console.log(isNegative(8))
+
 
 
 // Part 5
@@ -58,6 +112,24 @@ var doubleNum = function(num) {
 // Write a function that will find the minimum of four 
 // input numbers. You can do it using nested if statements,
 // boolean operators, or both (but not neither).
+
+var minimum = function (number1, number2, number3, number4){
+    if(number1 < number2 && number1 < number3 && number1 < number4){
+        return number1
+    }
+    else if(number2 < number1 && number2 < number3 && number2 < number4){
+        return number2
+    }
+    else if(number3 < number1 && number3 < number2 && number3 < number4){
+         return number3
+    }
+    else if(number4 < number1 || number4 < number2 || number4 < number3){
+         return number4
+    }
+}
+
+console.log('Part 5 can I do this better, to much code')    
+console.log(minimum(-9, -87, -3 , 1))
 
 
 // Part 6
@@ -67,6 +139,17 @@ var doubleNum = function(num) {
 // both or neither. 
 
 
+var justOneString = function(value) {
+    if (typeof value === 'string' && typeof value === 'string'){
+        return true
+    }
+    else{
+        return false
+    }
+}
+console.log('Part 6')
+console.log(justOneString('meatlessmonday'))
+
 // HARD MODE
 
 // Part 7
@@ -74,20 +157,28 @@ var doubleNum = function(num) {
 // Write a function called doTwice that takes as input a 
 // function and invokes that function twice. 
 
+var doSo = function() {
+    console.log('hello world')
+}
+
+var doTwice = function (input){
+    input()
+    input()
+    console.log('solecito')
+}
+
+console.log("Part 7")
+console.log(doTwice(doSo))
+
+
 // For testing purposes, I've included some functions that
 // modify global variables, although that's not a good
 // pattern for production code.
 
-var doTwice = function() {
-
-}
-
-var helloWorld = function() {
-	console.log('hello world')
-}
 
 
-doTwice(helloWorld) // should print 'hello world' to the console twice. 
+
+ // should print 'hello world' to the console twice. 
 
 
 // Part 8
@@ -97,17 +188,36 @@ doTwice(helloWorld) // should print 'hello world' to the console twice.
 // the value of a certain global variable, called ORACLE, is 
 // "YES." Otherwise, it will does nothing.
 
-var conditionallyInvoke = function() {
 
+var helloWorld = function(){
+	console.log('hello world')
 }
 
-var ORACLE = 'NO'
-
-conditionallyInvoke(helloWorld) // should do nothing
 
 var ORACLE = 'YES'
 
-conditionallyInvoke(helloWorld) // should print hello world
+var doSo = function() {
+    console.log('hello world')
+}
+
+var conditionallyInvoke = function (input){
+    if(ORACLE === 'YES'){
+        input()
+    }
+    else {
+    return null
+    }
+}
+
+conditionallyInvoke(doSo)
+
+
+
+//var ORACLE = 'NO' do nothing
+
+
+//var ORACLE = 'YES' log hello world
+
 
 
 // EPIC MODE
